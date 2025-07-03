@@ -161,11 +161,11 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
     -   `data` (data)
     -  `created_at` (data/hora, padrão para o momento da criação)
 -   [x] Permitir cadastrar clientes de uma loja de brinquedos via UI admin (nome, e-mail, data de nascimento)
--   [ ] Permitir cadastrar clientes de uma loja de brinquedos via api (nome, e-mail, data de nascimento)
--   [X] Listar os clientes via UI admin (por nome ou e-mail)
--   [x] Listar os clientes via API (por nome ou e-mail)
--   [x] Listar os clientes com opções de filtros via UI admin (por nome ou e-mail)
--   [ ] Listar os clientes com opções de filtros via API (por nome ou e-mail)
+-   [x] Permitir cadastrar clientes de uma loja de brinquedos via api (nome, e-mail, data de nascimento)
+-   [X] Listar os clientes via UI admin
+-   [x] Listar os clientes via API
+-   [x] Listar cliente com opções de filtros via UI admin (por nome ou e-mail)
+-   [x] Listar cliente com opções de filtros via API (por nome ou e-mail)
 -   [x] Permitir deletar um cliente via UI admin
 -   [ ] Permitir deletar um cliente via API
 -   [x] Permitir editar informações de um cliente via UI admin
