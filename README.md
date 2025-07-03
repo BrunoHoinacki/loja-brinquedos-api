@@ -148,32 +148,33 @@ Para rodar os testes automatizados do backend:
 
 Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógico e estruturação, com os seguintes pontos chave a serem abordados:
 
-### Para o Backend (API Django):
--   Permitir cadastrar clientes de uma loja de brinquedos (nome, e-mail, data de nascimento).
--   Listar os clientes com opções de filtros (por nome ou e-mail).
--   Permitir deletar um cliente.
--   Permitir editar informações de um cliente.
--   **Requer autenticação (JWT) para acessar as rotas.**
--   **Adicionar testes automatizados.**
--   Criar uma tabela adicional chamada `Sales` para armazenar vendas por cliente.
--   Criar uma rota de estatísticas que retorne o total de vendas por dia.
--   Criar outra rota que retorne:
-    -   O cliente com o maior volume de vendas.
-    -   O cliente com a maior média de valor por venda.
-    -   O cliente com o maior número de dias únicos com vendas registradas (frequência de compra).
--   **Banco de dados obrigatório no backend.**
+### ✅ Para o Backend (API Django):
+-   [ ] Permitir cadastrar clientes de uma loja de brinquedos (nome, e-mail, data de nascimento)
+-   [ ] Listar os clientes com opções de filtros (por nome ou e-mail)
+-   [ ] Permitir deletar um cliente
+-   [ ] Permitir editar informações de um cliente
+-   [ ] Requer autenticação (JWT) para acessar as rotas
+-   [ ] Adicionar testes automatizados
+-   [x] Criar uma tabela adicional chamada `Sales` para armazenar vendas por cliente
+-   [ ] Criar uma rota de estatísticas que retorne o total de vendas por dia
+-   [ ] Criar outra rota que retorne:
+    -   [ ] O cliente com o maior volume de vendas
+    -   [ ] O cliente com a maior média de valor por venda
+    -   [ ] O cliente com o maior número de dias únicos com vendas registradas (frequência de compra)
+-   [x] Banco de dados obrigatório no backend (SQLite)
 
-### Para o Frontend (Nuxt.js):
--   Permitir adicionar clientes com nome, e-mail e data de nascimento.
--   Listar os campos conforme achar pertinente.
--   **Adicionar autenticação simples.**
--   Consumir a API de estatísticas para:
-    -   Exibir um gráfico com o total de vendas por dia.
-    -   Destacar visualmente:
-        -   O cliente com maior volume de vendas.
-        -   O cliente com maior média de valor por venda.
-        -   O cliente com maior frequência de compras.
--   Adicionar um campo visual que indique, para cada cliente, a primeira letra do alfabeto que ainda não apareceu no nome completo do cliente. Se todas as letras de a-z estiverem presentes, exibir '-'.
+### ❌ Para o Frontend (Nuxt.js):
+-   [ ] Permitir adicionar clientes com nome, e-mail e data de nascimento
+-   [ ] Listar os campos conforme achar pertinente
+-   [ ] Adicionar autenticação simples
+-   [ ] Consumir a API de estatísticas para:
+    -   [ ] Exibir um gráfico com o total de vendas por dia
+    -   [ ] Destacar visualmente:
+        -   [ ] O cliente com maior volume de vendas
+        -   [ ] O cliente com maior média de valor por venda
+        -   [ ] O cliente com maior frequência de compras
+-   [ ] Adicionar um campo visual que indique, para cada cliente, a primeira letra do alfabeto que ainda não apareceu no nome completo do cliente. Se todas as letras de a-z estiverem presentes, exibir '-'.
+-   [ ] Tratar e normalizar a resposta da API de listagem de clientes, conforme o formato JSON fornecido
 -   **Ao consumir a API de listagem de clientes, considerar que o endpoint pode retornar uma estrutura desorganizada ou com dados redundantes.** O formato exato do JSON a ser tratado no front-end é:
     ```json
     {
