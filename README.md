@@ -149,13 +149,29 @@ Para rodar os testes automatizados do backend:
 Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógico e estruturação, com os seguintes pontos chave a serem abordados:
 
 ### ✅ Para o Backend (API Django):
--   [ ] Permitir cadastrar clientes de uma loja de brinquedos (nome, e-mail, data de nascimento)
--   [ ] Listar os clientes com opções de filtros (por nome ou e-mail)
--   [ ] Permitir deletar um cliente
--   [ ] Permitir editar informações de um cliente
--   [ ] Requer autenticação (JWT) para acessar as rotas
+-   [x] Criar um projeto Django com uma aplicação chamada `toy_store`
+-   [x] Criar um modelo `Client` com os campos:
+    -   `nomeCompleto` (string)
+    -   `email` (string, único)
+    -   `dataNascimento` (data)
+    -  `created_at` (data/hora, padrão para o momento da criação)
+-   [x] Criar um modelo `Sales` com os campos:
+    -   `Client` (chave estrangeira para `Client`)
+    -  `valor` (decimal)
+    -   `data` (data)
+    -  `created_at` (data/hora, padrão para o momento da criação)
+-   [x] Permitir cadastrar clientes de uma loja de brinquedos via UI admin (nome, e-mail, data de nascimento)
+-   [ ] Permitir cadastrar clientes de uma loja de brinquedos via api (nome, e-mail, data de nascimento)
+-   [X] Listar os clientes via UI admin (por nome ou e-mail)
+-   [x] Listar os clientes via API (por nome ou e-mail)
+-   [x] Listar os clientes com opções de filtros via UI admin (por nome ou e-mail)
+-   [ ] Listar os clientes com opções de filtros via API (por nome ou e-mail)
+-   [x] Permitir deletar um cliente via UI admin
+-   [ ] Permitir deletar um cliente via API
+-   [x] Permitir editar informações de um cliente via UI admin
+-   [ ] Permitir editar informações de um cliente via API
+-   [x] Requer autenticação (JWT) para acessar as rotas
 -   [ ] Adicionar testes automatizados
--   [x] Criar uma tabela adicional chamada `Sales` para armazenar vendas por cliente
 -   [ ] Criar uma rota de estatísticas que retorne o total de vendas por dia
 -   [ ] Criar outra rota que retorne:
     -   [ ] O cliente com o maior volume de vendas
