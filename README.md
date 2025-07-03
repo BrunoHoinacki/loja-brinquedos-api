@@ -167,11 +167,15 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
 -   [x] Listar cliente com opções de filtros via UI admin (por nome ou e-mail)
 -   [x] Listar cliente com opções de filtros via API (por nome ou e-mail)
 -   [x] Permitir deletar um cliente via UI admin
--   [ ] Permitir deletar um cliente via API
+-   [x] Permitir deletar um cliente via API
 -   [x] Permitir editar informações de um cliente via UI admin
--   [ ] Permitir editar informações de um cliente via API
+-   [x] Permitir editar informações de um cliente via API
 -   [x] Requer autenticação (JWT) para acessar as rotas
--   [ ] Adicionar testes automatizados
+-   [x] Permitir cadastrar vendas via API
+-   [x] Permitir deletar uma venda via API
+-   [x] Permitir editar informações de uma venda via API
+-   [x] Listar vendas via API (com filtros por cliente ou data, se pertinente)
+-   [ ] Adicionar testes automatizados (para Clientes e Vendas)
 -   [ ] Criar uma rota de estatísticas que retorne o total de vendas por dia
 -   [ ] Criar outra rota que retorne:
     -   [ ] O cliente com o maior volume de vendas
