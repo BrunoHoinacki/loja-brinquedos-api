@@ -52,8 +52,6 @@ Para rodar este projeto, você precisará ter instalado:
 -   **Python 3.9+** (com `pip` incluído)
 -   **Node.js 16+** (para o frontend, com `npm` ou `yarn` incluído)
 
----
-
 ## Configuração e Execução do Backend (API Django)
 
 Siga os passos abaixo para configurar e rodar a API:
@@ -162,6 +160,25 @@ Para testar a funcionalidade de normalização de dados de clientes com a estrut
 3.  **Para testar a normalização com dados simulados:** Mude o valor para `true`. Salve o arquivo e recarregue a página de clientes no navegador (`http://localhost:3000/clientes`). Você deverá ver os clientes "Ana Beatriz (Simulado)", "Carlos Eduardo (Simulado)" e "Bruno (Simulado)", extraídos da estrutura desorganizada simulada. Um cliente adicional ("abcdefghijklmnopqrstvuxywz (Simulado)") também estará presente para demonstrar a exibição do hífen.
 
 4.  **Para usar os dados da sua API Django real:** Mude o valor de `USE_SIMULATED_DATA` de volta para `false`. Salve o arquivo e recarregue a página. A lista de clientes será populada com os dados do seu backend real.
+
+---
+
+## 📬 Collection do Postman
+
+Para facilitar os testes da API, uma collection do Postman foi criada e incluída no projeto.
+
+### 🔽 Como usar
+
+1. Abra o Postman.
+2. Clique em **Import** (ícone no canto superior esquerdo).
+3. Selecione a opção **"Upload Files"**.
+4. Escolha o arquivo localizado em:
+
+```bash
+postman/loja-brinquedos.postman_collection.json
+```
+
+5. Após a importação, todos os endpoints da API estarão organizados e prontos para testes.
 
 ---
 

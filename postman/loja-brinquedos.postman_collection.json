@@ -1,0 +1,705 @@
+{
+	"info": {
+		"_postman_id": "8f917f88-73d5-4a54-842c-6ed6978355ce",
+		"name": "loja-brinquedos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22884240"
+	},
+	"item": [
+		{
+			"name": "clients",
+			"item": [
+				{
+					"name": "newclient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjAzNTAwLCJpYXQiOjE3NTE1OTk5MDAsImp0aSI6IjM1OWFmMjRiMTg5ZTQ3YTQ5NWJmYmUwNzk4OWI4ZGZiIiwidXNlcl9pZCI6MX0.0WVRUqaA2Uh-2i0P7O0F5idcp_tqBueUMCXRkSdq8v4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCompleto\": \"Maria Oliveira1\",\r\n  \"email\": \"maria@example.com\",\r\n  \"dataNascimento\": \"1990-04-20\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clients",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjAzNTAwLCJpYXQiOjE3NTE1OTk5MDAsImp0aSI6IjM1OWFmMjRiMTg5ZTQ3YTQ5NWJmYmUwNzk4OWI4ZGZiIiwidXNlcl9pZCI6MX0.0WVRUqaA2Uh-2i0P7O0F5idcp_tqBueUMCXRkSdq8v4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clients filter nomecompleto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc1MzQ3LCJpYXQiOjE3NTE1NzE3NDcsImp0aSI6IjA2MGJiYzViOTkxNTQxYjBiYmY0YWM3YWYzNDYxMGEzIiwidXNlcl9pZCI6MX0.Th_DmECy06S-gER7nbsLl537y2pNO3MBQzPWxzfclj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?nomeCompleto=bruno hoinacki",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "nomeCompleto",
+									"value": "bruno hoinacki"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clients filter nomecompleto Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc1MzQ3LCJpYXQiOjE3NTE1NzE3NDcsImp0aSI6IjA2MGJiYzViOTkxNTQxYjBiYmY0YWM3YWYzNDYxMGEzIiwidXNlcl9pZCI6MX0.Th_DmECy06S-gER7nbsLl537y2pNO3MBQzPWxzfclj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?email=brunohoinackib@gmail.com",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "brunohoinackib@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "client",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc1MzQ3LCJpYXQiOjE3NTE1NzE3NDcsImp0aSI6IjA2MGJiYzViOTkxNTQxYjBiYmY0YWM3YWYzNDYxMGEzIiwidXNlcl9pZCI6MX0.Th_DmECy06S-gER7nbsLl537y2pNO3MBQzPWxzfclj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc1MzQ3LCJpYXQiOjE3NTE1NzE3NDcsImp0aSI6IjA2MGJiYzViOTkxNTQxYjBiYmY0YWM3YWYzNDYxMGEzIiwidXNlcl9pZCI6MX0.Th_DmECy06S-gER7nbsLl537y2pNO3MBQzPWxzfclj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nomeCompleto\": \"bruno hoinacki\",\r\n  \"email\": \"bruno@example.com\",\r\n  \"dataNascimento\": \"1990-04-20\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc1MzQ3LCJpYXQiOjE3NTE1NzE3NDcsImp0aSI6IjA2MGJiYzViOTkxNTQxYjBiYmY0YWM3YWYzNDYxMGEzIiwidXNlcl9pZCI6MX0.Th_DmECy06S-gER7nbsLl537y2pNO3MBQzPWxzfclj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "newtoken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"bruno\",\r\n  \"password\": \"senha\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sales",
+			"item": [
+				{
+					"name": "new sale",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjAzNTAwLCJpYXQiOjE3NTE1OTk5MDAsImp0aSI6IjM1OWFmMjRiMTg5ZTQ3YTQ5NWJmYmUwNzk4OWI4ZGZiIiwidXNlcl9pZCI6MX0.0WVRUqaA2Uh-2i0P7O0F5idcp_tqBueUMCXRkSdq8v4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client\": 6,\r\n    \"valor\": \"800.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sales/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sales",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sales",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjAyMTAwLCJpYXQiOjE3NTE1OTg1MDAsImp0aSI6ImViZjg2ZDI1MThhOTRjMWY4NzgwZTQzYTEyNWYyZDFjIiwidXNlcl9pZCI6MX0.JfLs0hdSbyNIikX7Eg-Areq03Yz6rFmu6baOJAE4oBo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sales/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sales",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sales filter client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc5MDEyLCJpYXQiOjE3NTE1NzU0MTIsImp0aSI6ImRmYmE4NDEzYmY1NzRjYjNhMGQ5NGY2ODMxMmI3NzNmIiwidXNlcl9pZCI6MX0.tGfGWnB7AmgkP0PEk-ZRU9d8y0neYbX1ChXEBaQX89Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sales/?client=4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sales",
+								""
+							],
+							"query": [
+								{
+									"key": "client",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sales filter data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc5MDEyLCJpYXQiOjE3NTE1NzU0MTIsImp0aSI6ImRmYmE4NDEzYmY1NzRjYjNhMGQ5NGY2ODMxMmI3NzNmIiwidXNlcl9pZCI6MX0.tGfGWnB7AmgkP0PEk-ZRU9d8y0neYbX1ChXEBaQX89Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sales/?data=2025-07-03",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sales",
+								""
+							],
+							"query": [
+								{
+									"key": "data",
+									"value": "2025-07-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editSale",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc5MDEyLCJpYXQiOjE3NTE1NzU0MTIsImp0aSI6ImRmYmE4NDEzYmY1NzRjYjNhMGQ5NGY2ODMxMmI3NzNmIiwidXNlcl9pZCI6MX0.tGfGWnB7AmgkP0PEk-ZRU9d8y0neYbX1ChXEBaQX89Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client\": 4,\r\n    \"valor\": \"200.45\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sales/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sales",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete sale",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTc5MDEyLCJpYXQiOjE3NTE1NzU0MTIsImp0aSI6ImRmYmE4NDEzYmY1NzRjYjNhMGQ5NGY2ODMxMmI3NzNmIiwidXNlcl9pZCI6MX0.tGfGWnB7AmgkP0PEk-ZRU9d8y0neYbX1ChXEBaQX89Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client\": 4,\r\n    \"valor\": \"200.45\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/sales/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"sales",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "statics",
+			"item": [
+				{
+					"name": "sales day",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjQ1NjQ3LCJpYXQiOjE3NTE2NDIwNDcsImp0aSI6IjFiMjQ4MTFiYWFiODQ5NzY4ZDkxM2NmN2FkMzg2OWZjIiwidXNlcl9pZCI6MX0.Bj0_6yFpDLw27EVBpUCB8xNSEVnmOcKK4TUECI0WAb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/stats/vendas-por-dia/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"stats",
+								"vendas-por-dia",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "client statics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNjQ1NjQ3LCJpYXQiOjE3NTE2NDIwNDcsImp0aSI6IjFiMjQ4MTFiYWFiODQ5NzY4ZDkxM2NmN2FkMzg2OWZjIiwidXNlcl9pZCI6MX0.Bj0_6yFpDLw27EVBpUCB8xNSEVnmOcKK4TUECI0WAb8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/stats/clientes/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"stats",
+								"clientes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
