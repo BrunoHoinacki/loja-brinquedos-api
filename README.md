@@ -121,12 +121,12 @@ Siga os passos abaixo para configurar e rodar a aplicação frontend:
 
 2.  **Instale as dependências JavaScript:**
     ```bash
-    # npm install
+    npm install
     ```
 
 3.  **Inicie a aplicação frontend:**
     ```bash
-    # npm run dev
+    npm run dev
     ```
     A aplicação geralmente será aberta em `http://localhost:3000/`.
 
