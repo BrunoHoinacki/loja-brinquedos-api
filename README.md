@@ -175,12 +175,12 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
 -   [x] Permitir deletar uma venda via API
 -   [x] Permitir editar informações de uma venda via API
 -   [x] Listar vendas via API (com filtros por cliente ou data, se pertinente)
--   [ ] Adicionar testes automatizados (para Clientes e Vendas)
--   [ ] Criar uma rota de estatísticas que retorne o total de vendas por dia
--   [ ] Criar outra rota que retorne:
-    -   [ ] O cliente com o maior volume de vendas
-    -   [ ] O cliente com a maior média de valor por venda
-    -   [ ] O cliente com o maior número de dias únicos com vendas registradas (frequência de compra)
+-   [x] Adicionar testes automatizados (para Clientes e Vendas)
+-   [x] Criar uma rota de estatísticas que retorne o total de vendas por dia
+-   [x] Criar outra rota que retorne:
+    -   [x] O cliente com o maior volume de vendas
+    -   [x] O cliente com a maior média de valor por venda
+    -   [x] O cliente com o maior número de dias únicos com vendas registradas (frequência de compra)
 -   [x] Banco de dados obrigatório no backend (SQLite)
 
 ### ❌ Para o Frontend (Nuxt.js):
