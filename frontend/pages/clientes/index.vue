@@ -1,12 +1,7 @@
 <template>
-    <div class="min-h-screen bg-gray-100 py-10 px-4">
-        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-xl p-8 relative">
-
-            <button @click="logout"
-                class="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded text-sm">
-                Sair
-            </button>
-
+    <div class="min-h-screen bg-gray-100">
+        <AppNavbar />
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
             <h1 class="text-3xl font-bold text-blue-700 mb-6">
                 👨‍👩‍👧‍👦 Cadastro de Clientes
             </h1>
@@ -45,30 +40,30 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter, useCookie } from '#app'
+import { ref, onMounted } from 'vue';
+import { useCookie } from '#app';
+import AppNavbar from '~/components/AppNavbar.vue';
 
-const router = useRouter()
-const token = useCookie('token')
+const token = useCookie('token');
 
-const nomeCompleto = ref('')
-const email = ref('')
-const dataNascimento = ref('')
-const clientes = ref([])
+const nomeCompleto = ref('');
+const email = ref('');
+const dataNascimento = ref('');
+const clientes = ref([]);
 
 const carregarClientes = async () => {
-    if (!token.value) return
+    if (!token.value) return;
     try {
         const response = await $fetch('http://127.0.0.1:8000/api/clients/', {
             headers: {
                 Authorization: `Bearer ${token.value}`
             }
-        })
-        clientes.value = response.results
+        });
+        clientes.value = response.results;
     } catch (error) {
-        console.error('Erro ao carregar clientes:', error)
+        console.error('Erro ao carregar clientes:', error);
     }
-}
+};
 
 const cadastrarCliente = async () => {
     try {
@@ -83,32 +78,27 @@ const cadastrarCliente = async () => {
                 email: email.value,
                 dataNascimento: dataNascimento.value
             }
-        })
+        });
 
-        alert('Cliente cadastrado com sucesso!')
-        nomeCompleto.value = ''
-        email.value = ''
-        dataNascimento.value = ''
-        await carregarClientes()
+        alert('Cliente cadastrado com sucesso!');
+        nomeCompleto.value = '';
+        email.value = '';
+        dataNascimento.value = '';
+        await carregarClientes();
     } catch (error) {
-        alert('Erro ao cadastrar cliente.')
-        console.error(error)
+        alert('Erro ao cadastrar cliente.');
+        console.error(error);
     }
-}
-
-const logout = () => {
-    token.value = null
-    router.push('/')
-}
+};
 
 const formatarData = (data) => {
-    const [ano, mes, dia] = data.split('T')[0].split('-')
-    return `${dia}/${mes}/${ano}`
-}
+    const [ano, mes, dia] = data.split('T')[0].split('-');
+    return `${dia}/${mes}/${ano}`;
+};
 
 onMounted(() => {
     if (token.value) {
-        carregarClientes()
+        carregarClientes();
     }
-})
+});
 </script>

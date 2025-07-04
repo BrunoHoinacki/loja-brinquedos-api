@@ -189,11 +189,11 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
 ### ❌ Para o Frontend (Nuxt.js):
 -   [x] Criar um projeto Nuxt.js
 -   [x] Rodar backend e frontend simultaneamente
--   [ ] Permitir adicionar clientes com nome, e-mail e data de nascimento
--   [ ] Listar os campos conforme achar pertinente
--   [ ] Adicionar autenticação simples
--   [ ] Consumir a API de estatísticas para:
-    -   [ ] Exibir um gráfico com o total de vendas por dia
+-   [x] Permitir adicionar clientes com nome, e-mail e data de nascimento
+-   [x] Listar os campos conforme achar pertinente
+-   [x] Adicionar autenticação simples
+-   [x] Consumir a API de estatísticas para:
+    -   [x] Exibir um gráfico com o total de vendas por dia
     -   [ ] Destacar visualmente:
         -   [ ] O cliente com maior volume de vendas
         -   [ ] O cliente com maior média de valor por venda

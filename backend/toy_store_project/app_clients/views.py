@@ -7,7 +7,7 @@ from .serializers import ClientSerializer, SaleSerializer
 
 from django.http import HttpResponse
 from django_filters.rest_framework import DjangoFilterBackend
-from django.db.models import Sum, Avg, Count
+from django.db.models import Sum, Avg, Count, F
 from django.db.models.functions import TruncDate
 
 def index(request):
@@ -41,9 +41,13 @@ def estatisticas_vendas_por_dia(request):
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated])
 def estatisticas_clientes(request):
+
     maior_volume = (
         Sale.objects
-        .values('client')
+        .values(
+            'client_id',
+            nome_completo=F('client__nomeCompleto')
+        )
         .annotate(total=Sum('valor'))
         .order_by('-total')
         .first()
@@ -51,7 +55,10 @@ def estatisticas_clientes(request):
 
     maior_media = (
         Sale.objects
-        .values('client')
+        .values(
+            'client_id',
+            nome_completo=F('client__nomeCompleto')
+        )
         .annotate(media=Avg('valor'))
         .order_by('-media')
         .first()
@@ -59,7 +66,10 @@ def estatisticas_clientes(request):
 
     maior_frequencia = (
         Sale.objects
-        .values('client')
+        .values(
+            'client_id',
+            nome_completo=F('client__nomeCompleto')
+        )
         .annotate(dias=Count('data', distinct=True))
         .order_by('-dias')
         .first()
