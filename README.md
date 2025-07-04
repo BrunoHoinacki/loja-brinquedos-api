@@ -27,6 +27,7 @@ O backend será o coração do sistema, responsável por toda a lógica de negó
     * O cliente com a maior média de valor por venda.
     * O cliente com o maior número de dias únicos com vendas registradas (frequência de compra).
 5.  **Testes Automatizados**: Contará com uma suíte de testes para garantir a robustez e a correção das funcionalidades da API.
+6.  **Documentação Interativa (Swagger/OpenAPI)**: Todos os endpoints da API estão mapeados e podem ser explorados e testados através da interface interativa do Swagger UI.
 
 ### Frontend (Nuxt.js)
 
@@ -108,6 +109,10 @@ Siga os passos abaixo para configurar e rodar a API:
     A API estará disponível em `http://127.0.0.1:8000/`.
     Admin do Django estará disponível em `http://127.0.0.1:8000/admin/`.
 
+8.  **Acesse a Documentação da API (Swagger UI):**
+    Depois que o servidor Django estiver rodando, você pode explorar todos os endpoints da API, suas regras e testá-los diretamente através da interface interativa do Swagger UI em:
+    `http://127.0.0.1:8000/api/schema/swagger-ui/`
+
 ---
 
 ## Configuração e Execução do Frontend (Nuxt.js)
@@ -145,6 +150,19 @@ Para rodar os testes automatizados do backend:
     ```bash
     python manage.py test app_clients
     ```
+
+### Frontend (Teste de Normalização de Dados de Cliente)
+Para testar a funcionalidade de normalização de dados de clientes com a estrutura "desorganizada" especificada no desafio:
+
+1.  Abra o arquivo `frontend/pages/clientes/index.vue`.
+2.  Localize a variável `USE_SIMULATED_DATA`:
+    ```typescript
+    const USE_SIMULATED_DATA = false; // Altere para 'true' para usar os dados simulados
+    ```
+3.  **Para testar a normalização com dados simulados:** Mude o valor para `true`. Salve o arquivo e recarregue a página de clientes no navegador (`http://localhost:3000/clientes`). Você deverá ver os clientes "Ana Beatriz (Simulado)", "Carlos Eduardo (Simulado)" e "Bruno (Simulado)", extraídos da estrutura desorganizada simulada. Um cliente adicional ("abcdefghijklmnopqrstvuxywz (Simulado)") também estará presente para demonstrar a exibição do hífen.
+
+4.  **Para usar os dados da sua API Django real:** Mude o valor de `USE_SIMULATED_DATA` de volta para `false`. Salve o arquivo e recarregue a página. A lista de clientes será populada com os dados do seu backend real.
+
 ---
 
 ## Desafio: Detalhes da Implementação
@@ -157,12 +175,12 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
     -   `nomeCompleto` (string)
     -   `email` (string, único)
     -   `dataNascimento` (data)
-    -  `created_at` (data/hora, padrão para o momento da criação)
+    -   `created_at` (data/hora, padrão para o momento da criação)
 -   [x] Criar um modelo `Sales` com os campos:
     -   `Client` (chave estrangeira para `Client`)
-    -  `valor` (decimal)
+    -   `valor` (decimal)
     -   `data` (data)
-    -  `created_at` (data/hora, padrão para o momento da criação)
+    -   `created_at` (data/hora, padrão para o momento da criação)
 -   [x] Permitir cadastrar clientes de uma loja de brinquedos via UI admin (nome, e-mail, data de nascimento)
 -   [x] Permitir cadastrar clientes de uma loja de brinquedos via api (nome, e-mail, data de nascimento)
 -   [X] Listar os clientes via UI admin
@@ -186,7 +204,7 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
     -   [x] O cliente com o maior número de dias únicos com vendas registradas (frequência de compra)
 -   [x] Banco de dados obrigatório no backend (SQLite)
 
-### ❌ Para o Frontend (Nuxt.js):
+### ✅ Para o Frontend (Nuxt.js):
 -   [x] Criar um projeto Nuxt.js
 -   [x] Rodar backend e frontend simultaneamente
 -   [x] Permitir adicionar clientes com nome, e-mail e data de nascimento
@@ -198,8 +216,8 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
         -   [x] O cliente com maior volume de vendas
         -   [x] O cliente com maior média de valor por venda
         -   [x] O cliente com maior frequência de compras
--   [ ] Adicionar um campo visual que indique, para cada cliente, a primeira letra do alfabeto que ainda não apareceu no nome completo do cliente. Se todas as letras de a-z estiverem presentes, exibir '-'.
--   [ ] Tratar e normalizar a resposta da API de listagem de clientes, conforme o formato JSON fornecido
+-   [x] Adicionar um campo visual que indique, para cada cliente, a primeira letra do alfabeto que ainda não apareceu no nome completo do cliente. Se todas as letras de a-z estiverem presentes, exibir '-'.
+-   [x] Tratar e normalizar a resposta da API de listagem de clientes, conforme o formato JSON fornecido
 -   **Ao consumir a API de listagem de clientes, considerar que o endpoint pode retornar uma estrutura desorganizada ou com dados redundantes.** O formato exato do JSON a ser tratado no front-end é:
     ```json
     {
@@ -253,3 +271,55 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
     }
     ```
     O candidato deve extrair corretamente os dados relevantes e ignorar as informações desnecessárias ou duplicadas.
+
+    Claro! Abaixo está a **seção final do seu README** com todas as imagens mencionadas, formatadas corretamente em Markdown. Basta substituir os caminhos locais pelos caminhos relativos do seu repositório (por exemplo, `./prints/serversOnTerminal.png`) ou por URLs se for hospedar as imagens externamente (como no GitHub).
+
+---
+
+## 📸 Prints do Sistema
+
+### 🖥️ Servidores em Execução
+
+![Servidores rodando em paralelo](./prints/serversOnTerminal.png)
+
+### 🔎 Swagger da API
+
+![Swagger da API](./prints/api/swagger.png)
+
+### 🛠️ Django Admin
+
+#### Dashboard principal
+
+![Dashboard Django](./prints/backend/dashboardDjango.png)
+
+#### Lista de Clientes
+
+![Dashboard Django - Clientes](./prints/backend/dashboardDjangoClient.png)
+
+#### Lista de Vendas
+
+![Dashboard Django - Vendas](./prints/backend/dashboardDjangoSale.png)
+
+#### Página Inicial do Admin
+
+![Página Inicial Admin](./prints/backend/index.png)
+
+### 💻 Frontend (Nuxt.js)
+
+#### Página Inicial
+
+![Frontend - Página Inicial](./prints/frontend/index.png)
+
+#### Tela de Login
+
+![Frontend - Login](./prints/frontend/login.png)
+
+#### Listagem de Clientes
+
+![Frontend - Clientes](./prints/frontend/clients.png)
+
+#### Estatísticas e Gráficos
+
+![Frontend - Estatísticas](./prints/frontend/statistics.png)
+
+---

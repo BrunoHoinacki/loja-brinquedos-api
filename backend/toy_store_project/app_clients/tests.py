@@ -10,11 +10,16 @@ class AuthSetupMixin:
     def setUp(self):
         super().setUp() # Garante que o setUp da classe base (APITestCase) seja chamado.
 
-        self.username = 'bruno'
-        self.password = 'senha'
-        self.user, _ = User.objects.get_or_create(username=self.username)
-        self.user.set_password(self.password)
-        self.user.save()
+        self.username = 'testuser' # Nome de usuário genérico para testes
+        self.password = 'testpassword123' # Senha genérica e forte o suficiente para testes
+
+        # Cria um superusuário para os testes de API.
+        # Garante que o usuário tenha todas as permissões necessárias.
+        self.user = User.objects.create_superuser(
+            username=self.username,
+            email='test@example.com',
+            password=self.password
+        )
 
         self.token = self.get_jwt_token()
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.token)
@@ -126,7 +131,6 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
             email='cliente.teste@example.com',
             dataNascimento='1985-06-20'
         )
-        # Define a data de hoje para uso nos testes
         self.today_str = datetime.date.today().strftime('%Y-%m-%d')
         self.sale_data = {
             'client': self.client_obj.pk,
@@ -153,7 +157,6 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
 
     def test_list_sales(self):
         """Deve ser possível listar vendas."""
-        # Cria uma venda com a data de hoje para o teste de listagem
         Sale.objects.create(client=self.client_obj, valor=50.00, data=self.today_str)
         response = self.client.get(self.sale_url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -162,7 +165,6 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
 
     def test_retrieve_sale(self):
         """Deve ser possível obter detalhes de uma venda específica."""
-        # Cria uma venda com a data de hoje para o teste
         sale = Sale.objects.create(client=self.client_obj, valor=150.00, data=self.today_str)
         response = self.client.get(self.sale_detail_url(sale.pk), format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -171,23 +173,20 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
 
     def test_update_sale_partial(self):
         """Deve ser possível atualizar parcialmente uma venda."""
-        # Cria uma venda. 'data' será preenchida automaticamente com a data de criação.
         sale = Sale.objects.create(client=self.client_obj, valor=200.00)
-        original_sale_data_str = str(sale.data) # Captura a data real de criação
+        original_sale_data_str = str(sale.data)
 
         update_data = {'valor': '250.75'}
         response = self.client.patch(self.sale_detail_url(sale.pk), update_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         sale.refresh_from_db()
         self.assertEqual(float(sale.valor), 250.75)
-        # Confirma que a data não foi alterada (continua sendo a data de criação)
         self.assertEqual(str(sale.data), original_sale_data_str)
 
     def test_update_sale_full(self):
         """Deve ser possível atualizar completamente uma venda (exceto campos auto_now_add)."""
-        # Cria uma venda. 'data' será preenchida automaticamente com a data de criação.
         sale = Sale.objects.create(client=self.client_obj, valor=100.00)
-        original_sale_data_str = str(sale.data) # Captura a data real de criação
+        original_sale_data_str = str(sale.data)
 
         new_client = Client.objects.create(
             nomeCompleto='Novo Cliente',
@@ -203,13 +202,12 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
         sale.refresh_from_db()
         self.assertEqual(float(sale.valor), 300.00)
         self.assertEqual(sale.client.pk, new_client.pk)
-        # Confirma que a data NÃO mudou e é a data original de criação
         self.assertEqual(str(sale.data), original_sale_data_str)
 
     def test_delete_sale(self):
         """Deve ser possível deletar uma venda."""
         Sale.objects.create(client=self.client_obj, valor=75.00)
-        response = self.client.delete(self.sale_detail_url(Sale.objects.first().pk)) # Pega o PK da primeira venda
+        response = self.client.delete(self.sale_detail_url(Sale.objects.first().pk))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Sale.objects.count(), 0)
 
@@ -220,7 +218,6 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
             email='outro@example.com',
             dataNascimento='1999-01-01'
         )
-        # Cria vendas com a data de hoje para consistência
         Sale.objects.create(client=self.client_obj, valor=10.00)
         Sale.objects.create(client=another_client, valor=20.00)
         
@@ -231,13 +228,11 @@ class SaleAPITests(AuthSetupMixin, APITestCase):
 
     def test_filter_sales_by_date(self):
         """Deve ser possível filtrar vendas por data."""
-        # Cria duas vendas, ambas com a data de hoje.
         today = datetime.date.today().strftime('%Y-%m-%d')
         Sale.objects.create(client=self.client_obj, valor=10.00, data=today)
         Sale.objects.create(client=self.client_obj, valor=20.00, data=today)
         
         response = self.client.get(self.sale_url + f'?data={today}', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Deve encontrar 2 vendas, pois ambas foram criadas na data de hoje.
-        self.assertEqual(len(response.data['results']), 2) 
+        self.assertEqual(len(response.data['results']), 2)
         self.assertEqual(response.data['results'][0]['data'], today)
