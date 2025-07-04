@@ -59,7 +59,7 @@ Siga os passos abaixo para configurar e rodar a API:
 
 1.  **Navegue para a pasta raiz do projeto:**
     ```bash
-    cd C:\Users\Bruno\code\loja-brinquedos-api
+    cd loja-brinquedos-api
     ```
 
 2.  **Crie e ative o ambiente virtual Python:**
@@ -70,6 +70,11 @@ Siga os passos abaixo para configurar e rodar a API:
     *Se você estiver usando o terminal WSL/Linux/macOS, use:*
     ```bash
     source venv/bin/activate
+    ```
+
+    *caso queira desativar o ambiente virtual, use:*
+    ```bash
+    deactivate
     ```
 
 3.  **Navegue para a pasta do backend:**
@@ -101,6 +106,7 @@ Siga os passos abaixo para configurar e rodar a API:
     python manage.py runserver
     ```
     A API estará disponível em `http://127.0.0.1:8000/`.
+    Admin do Django estará disponível em `http://127.0.0.1:8000/admin/`.
 
 ---
 
@@ -110,21 +116,19 @@ Siga os passos abaixo para configurar e rodar a aplicação frontend:
 
 1.  **Navegue para a pasta do frontend:**
     ```bash
-    cd C:\Users\Bruno\code\loja-brinquedos-api\frontend
+    cd loja-brinquedos-api\frontend
     ```
 
 2.  **Instale as dependências JavaScript:**
-    (Este passo será realizado após a criação do projeto Nuxt.js)
     ```bash
     # npm install
     ```
 
 3.  **Inicie a aplicação frontend:**
-    (Este passo será realizado após a criação do projeto Nuxt.js)
     ```bash
     # npm run dev
     ```
-    A aplicação geralmente será aberta em `http://localhost:3000/` (ou outra porta).
+    A aplicação geralmente será aberta em `http://localhost:3000/`.
 
 ---
 
@@ -133,16 +137,14 @@ Siga os passos abaixo para configurar e rodar a aplicação frontend:
 ### Backend
 Para rodar os testes automatizados do backend:
 
-1.  Ative o ambiente virtual e navegue para a pasta `backend`.
+1.  Ative o ambiente virtual e navegue para a pasta.
+    ```bash
+    cd loja-brinquedos-api\backend\toy_store_project
+    ```
 2.  Execute:
     ```bash
-    cd backend/toy_store_project
     python manage.py test app_clients
     ```
-
-### Frontend
-(Instruções de teste para Nuxt.js serão adicionadas após a implementação do frontend)
-
 ---
 
 ## Desafio: Detalhes da Implementação
