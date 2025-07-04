@@ -187,6 +187,8 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
 -   [x] Banco de dados obrigatório no backend (SQLite)
 
 ### ❌ Para o Frontend (Nuxt.js):
+-   [x] Criar um projeto Nuxt.js
+-   [x] Rodar backend e frontend simultaneamente
 -   [ ] Permitir adicionar clientes com nome, e-mail e data de nascimento
 -   [ ] Listar os campos conforme achar pertinente
 -   [ ] Adicionar autenticação simples
