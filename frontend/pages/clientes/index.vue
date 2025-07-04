@@ -1,16 +1,16 @@
 <template>
     <div class="min-h-screen bg-gray-100 py-10 px-4">
         <div class="max-w-4xl mx-auto bg-white shadow-md rounded-xl p-8 relative">
-            <!-- Logout -->
+
             <button @click="logout"
                 class="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded text-sm">
                 Sair
             </button>
 
-            <!-- Cabeçalho -->
-            <h1 class="text-3xl font-bold text-blue-700 mb-6">👨‍👩‍👧‍👦 Cadastro de Clientes</h1>
+            <h1 class="text-3xl font-bold text-blue-700 mb-6">
+                👨‍👩‍👧‍👦 Cadastro de Clientes
+            </h1>
 
-            <!-- Formulário -->
             <form @submit.prevent="cadastrarCliente" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <input v-model="nomeCompleto" type="text" placeholder="Nome Completo"
                     class="p-3 border border-gray-300 rounded w-full" required />
@@ -24,15 +24,20 @@
                 </button>
             </form>
 
-            <!-- Lista de Clientes -->
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">📋 Clientes Cadastrados</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+                📋 Clientes Cadastrados
+            </h2>
 
             <div class="grid gap-4">
                 <div v-for="cliente in clientes" :key="cliente.id"
                     class="bg-blue-50 border border-blue-100 rounded p-4 shadow-sm">
-                    <p class="text-lg font-semibold text-blue-900">{{ cliente.nomeCompleto }}</p>
+                    <p class="text-lg font-semibold text-blue-900">
+                        {{ cliente.nomeCompleto }}
+                    </p>
                     <p class="text-sm text-gray-600">{{ cliente.email }}</p>
-                    <p class="text-sm text-gray-500">Nascimento: {{ formatarData(cliente.dataNascimento) }}</p>
+                    <p class="text-sm text-gray-500">
+                        Nascimento: {{ formatarData(cliente.dataNascimento) }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -41,53 +46,53 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useFetch, useCookie, useRouter } from '#app'
+import { useRouter, useCookie } from '#app'
 
 const router = useRouter()
 const token = useCookie('token')
+
 const nomeCompleto = ref('')
 const email = ref('')
 const dataNascimento = ref('')
 const clientes = ref([])
 
 const carregarClientes = async () => {
-    const { data, error } = await useFetch('http://127.0.0.1:8000/api/clients/', {
-        headers: {
-            Authorization: `Bearer ${token.value}`
-        }
-    })
-    if (data.value) {
-        clientes.value = data.value.results
-    } else {
-        console.error(error.value)
+    if (!token.value) return
+    try {
+        const response = await $fetch('http://127.0.0.1:8000/api/clients/', {
+            headers: {
+                Authorization: `Bearer ${token.value}`
+            }
+        })
+        clientes.value = response.results
+    } catch (error) {
+        console.error('Erro ao carregar clientes:', error)
     }
 }
 
 const cadastrarCliente = async () => {
-    const payload = {
-        nomeCompleto: nomeCompleto.value,
-        email: email.value,
-        dataNascimento: dataNascimento.value
-    }
+    try {
+        await $fetch('http://127.0.0.1:8000/api/clients/', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token.value}`,
+                'Content-Type': 'application/json'
+            },
+            body: {
+                nomeCompleto: nomeCompleto.value,
+                email: email.value,
+                dataNascimento: dataNascimento.value
+            }
+        })
 
-    const { error } = await useFetch('http://127.0.0.1:8000/api/clients/', {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${token.value}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-
-    if (!error.value) {
         alert('Cliente cadastrado com sucesso!')
         nomeCompleto.value = ''
         email.value = ''
         dataNascimento.value = ''
         await carregarClientes()
-    } else {
+    } catch (error) {
         alert('Erro ao cadastrar cliente.')
-        console.error(error.value)
+        console.error(error)
     }
 }
 
@@ -97,11 +102,13 @@ const logout = () => {
 }
 
 const formatarData = (data) => {
-    const d = new Date(data)
-    return d.toLocaleDateString('pt-BR')
+    const [ano, mes, dia] = data.split('T')[0].split('-')
+    return `${dia}/${mes}/${ano}`
 }
 
 onMounted(() => {
-    carregarClientes()
+    if (token.value) {
+        carregarClientes()
+    }
 })
 </script>

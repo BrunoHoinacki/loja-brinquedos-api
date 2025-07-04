@@ -1,9 +1,9 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  const token = useCookie('token')
+    const token = useCookie('token')
 
-  const rotasProtegidas = ['/clientes', '/vendas', '/estatisticas']
+    const rotasProtegidas = ['/clientes', '/vendas', '/estatisticas']
 
-  if (rotasProtegidas.includes(to.path) && !token.value) {
-    return navigateTo('/login')
-  }
+    if (rotasProtegidas.includes(to.path) && !token.value) {
+        return navigateTo('/login')
+    }
 })
