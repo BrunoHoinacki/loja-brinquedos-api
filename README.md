@@ -272,8 +272,6 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
     ```
     O candidato deve extrair corretamente os dados relevantes e ignorar as informações desnecessárias ou duplicadas.
 
-    Claro! Abaixo está a **seção final do seu README** com todas as imagens mencionadas, formatadas corretamente em Markdown. Basta substituir os caminhos locais pelos caminhos relativos do seu repositório (por exemplo, `./prints/serversOnTerminal.png`) ou por URLs se for hospedar as imagens externamente (como no GitHub).
-
 ---
 
 ## 📸 Prints do Sistema
