@@ -194,10 +194,10 @@ Este projeto visa avaliar o domínio de stack, boas práticas, raciocínio lógi
 -   [x] Adicionar autenticação simples
 -   [x] Consumir a API de estatísticas para:
     -   [x] Exibir um gráfico com o total de vendas por dia
-    -   [ ] Destacar visualmente:
-        -   [ ] O cliente com maior volume de vendas
-        -   [ ] O cliente com maior média de valor por venda
-        -   [ ] O cliente com maior frequência de compras
+    -   [x] Destacar visualmente:
+        -   [x] O cliente com maior volume de vendas
+        -   [x] O cliente com maior média de valor por venda
+        -   [x] O cliente com maior frequência de compras
 -   [ ] Adicionar um campo visual que indique, para cada cliente, a primeira letra do alfabeto que ainda não apareceu no nome completo do cliente. Se todas as letras de a-z estiverem presentes, exibir '-'.
 -   [ ] Tratar e normalizar a resposta da API de listagem de clientes, conforme o formato JSON fornecido
 -   **Ao consumir a API de listagem de clientes, considerar que o endpoint pode retornar uma estrutura desorganizada ou com dados redundantes.** O formato exato do JSON a ser tratado no front-end é:
