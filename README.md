@@ -136,7 +136,8 @@ Para rodar os testes automatizados do backend:
 1.  Ative o ambiente virtual e navegue para a pasta `backend`.
 2.  Execute:
     ```bash
-    python manage.py test
+    cd backend/toy_store_project
+    python manage.py test app_clients
     ```
 
 ### Frontend
